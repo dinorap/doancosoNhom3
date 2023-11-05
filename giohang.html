@@ -3,7 +3,11 @@
 
 <head>
   <meta charset="UTF-8" />
+<<<<<<< HEAD
   <meta name="viewport" content="width=device-width, initial-scale=0.33">
+=======
+  <meta name="viewport" content="width=device-width, initial-scale=0.37">
+>>>>>>> 085ed6fd10e6d4510f4450f6041a435ba1c8ea13
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="shortcut icon" href="img/favicon.ico" />
 
@@ -31,6 +35,7 @@
       color: red;
       margin-left: 10px;
     }
+<<<<<<< HEAD
 
     .qr-div {
       text-align: center;
@@ -67,10 +72,13 @@
       border: 1px solid red;
       color: #fff;
     }
+=======
+>>>>>>> 085ed6fd10e6d4510f4450f6041a435ba1c8ea13
   </style>
 </head>
 
 <body>
+<<<<<<< HEAD
 
   <section style="min-height: 100vh">
     <script>
@@ -88,6 +96,20 @@
         </div>
       </div>
       <div class="infor0" id="infor0">
+=======
+  <script>
+    addTopNav();
+  </script>
+
+  <section style="min-height: 90vh">
+    <script>
+      addHeader();
+    </script>
+
+    <table class="listSanPham"></table>
+    <div id="checkoutModal">
+      <div class="infor0">
+>>>>>>> 085ed6fd10e6d4510f4450f6041a435ba1c8ea13
         <div class="infor1">
           <h2 id="modalLabel">Thông tin người mua</h2>
         </div>
@@ -135,6 +157,7 @@
             <div class="form-group">
               <label>Lời nhắn</label>
               <textarea rows="5" style="margin-top:10px;" id="hint"></textarea>
+<<<<<<< HEAD
             </div>
             <div class="form-group">
               <label for="">Chọn phương thức thanh toán</label><br>
@@ -142,6 +165,9 @@
                 <option>Thanh toán sau khi nhận hàng</option>
                 <option>Thanh toán Online</option>
               </select>
+=======
+
+>>>>>>> 085ed6fd10e6d4510f4450f6041a435ba1c8ea13
             </div>
           </form>
         </div>
@@ -162,7 +188,32 @@
       const xaSelect = document.getElementById("xa");
 
       // Function để lấy dữ liệu từ API
+<<<<<<< HEAD
 
+=======
+      function fetchDataFromAPI(url, selectBox, placeholder) {
+        return fetch(url) // Trả về promise từ fetch
+          .then((response) => {
+            if (response.status === 200) {
+              return response.json();
+            } else {
+              throw new Error("Không thể lấy dữ liệu từ API");
+            }
+          })
+          .then((data) => {
+            selectBox.innerHTML = "";
+            selectBox.appendChild(new Option(placeholder, ""));
+            data.forEach((item) => {
+              selectBox.appendChild(new Option(item.name, item.code));
+            });
+
+          })
+          .catch((error) => {
+            console.error("Đã xảy ra lỗi: " + error.message);
+            throw error; // Ném lỗi để có thể xử lý nó ở nơi gọi hàm
+          });
+      }
+>>>>>>> 085ed6fd10e6d4510f4450f6041a435ba1c8ea13
       function fetchDataFromAPI(url, selectBox, placeholder, id) {
         return fetch(url) // Trả về promise từ fetch
           .then((response) => {
@@ -238,12 +289,20 @@
         }
       });
     });
+<<<<<<< HEAD
     function thanhtoanqr() {
       thanhToan();
     }
     addContainTaiKhoan();
     function kiemTraThongTin() {
       var isValid = true;
+=======
+
+    addContainTaiKhoan();
+    function kiemTraThongTin() {
+      var isValid = true;
+
+>>>>>>> 085ed6fd10e6d4510f4450f6041a435ba1c8ea13
       var hoInput = document.getElementById('ho');
       var tenInput = document.getElementById('ten');
       var emailInput = document.getElementById('email');
@@ -253,9 +312,13 @@
       var phuongXaSelect = document.getElementById('xa');
       var sonhaInput = document.getElementById("sonha")
       var errorMessages = document.querySelectorAll(".error-message");
+<<<<<<< HEAD
       var thanhToanSelect = document.getElementById('thanhtoan');
       var qrCode = document.getElementById('qr-code');
       var infor0 = document.getElementById('infor0');
+=======
+
+>>>>>>> 085ed6fd10e6d4510f4450f6041a435ba1c8ea13
       // Xóa bất kỳ thông báo lỗi nào đã hiển thị trước đó
       errorMessages.forEach(function (message) {
         message.textContent = "";
@@ -296,6 +359,7 @@
         errorMessages[3].textContent = "Vui lòng nhập đầy đủ địa chỉ.";
         isValid = false;
       }
+<<<<<<< HEAD
       if (isValid && thanhToanSelect.value == "Thanh toán sau khi nhận hàng") {
         // Nếu thông tin đã đủ và hợp lệ, thực hiện hành động thanh toán
         thanhToan();
@@ -308,6 +372,19 @@
     }
   </script>
   <!-- Các phần còn lại của mã HTML -->
+=======
+      if (isValid) {
+        // Nếu thông tin đã đủ và hợp lệ, thực hiện hành động thanh toán
+        thanhToan();
+      }
+      return isValid;
+    }
+  </script>
+
+  <!-- Các phần còn lại của mã HTML -->
+  </section>
+
+>>>>>>> 085ed6fd10e6d4510f4450f6041a435ba1c8ea13
   </script>
 
   <div class="footer">
