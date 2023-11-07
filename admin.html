@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.33">
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
   <title>Admin - Thế giới điện thoại</title>
@@ -27,7 +27,9 @@
 </head>
 
 <body>
-  <header>
+  <header style="
+  text-align: center;
+">
     <h2>Mobile Store - Admin</h2>
   </header>
 
@@ -46,6 +48,9 @@
       </li>
       <li class="nav-item">
         <a class="nav-link"><i class="fa fa-address-book-o"></i> Khách Hàng</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"><i class="fa fa-newspaper-o"></i> Tin Tức</a>
       </li>
       <li class="nav-item">
         <hr />
@@ -70,13 +75,7 @@
         <canvas id="myChart2"></canvas>
       </div>
 
-      <div class="canvasContainer">
-        <canvas id="myChart3"></canvas>
-      </div>
 
-      <div class="canvasContainer">
-        <canvas id="myChart4"></canvas>
-      </div>
     </div>
 
     <!-- Sản Phẩm -->
@@ -264,19 +263,19 @@
           <th title="Sắp xếp" style="width: 15%" onclick="sortDonHangTable('sanpham')">
             Sản phẩm <i class="fa fa-sort"></i>
           </th>
-          <th title="Sắp xếp" style="width: 15%" onclick="sortDonHangTable('tongtien')">
+          <th title="Sắp xếp" style="width: 10%" onclick="sortDonHangTable('tongtien')">
             Tổng tiền <i class="fa fa-sort"></i>
           </th>
           <th title="Sắp xếp" style="width: 10%" onclick="sortDonHangTable('ngaygio')">
             Ngày giờ <i class="fa fa-sort"></i>
           </th>
-          <th title="Sắp xếp" style="width: 15%">
+          <th title="Sắp xếp" style="width: 26%">
             Thông Tin <i class="fa fa-sort"></i>
           </th>
-          <th title="Sắp xếp" style="width: 10%" onclick="sortDonHangTable('trangthai')">
+          <th title="Sắp xếp" style="width: 7%" onclick="sortDonHangTable('trangthai')">
             Trạng thái <i class="fa fa-sort"></i>
           </th>
-          <th style="width: 10%">Hành động</th>
+          <th style="width: 7%">Hành động</th>
         </tr>
       </table>
 
@@ -375,6 +374,85 @@
         </table>
 
       </div>
+    </div>
+    <div class="tintuc">
+      <table class="table-header">
+        <tr>
+          <!-- Theo độ rộng của table content -->
+          <th title="Sắp xếp" style="width: 5%" onclick="sortNewsTable('stt')">
+            Stt <i class="fa fa-sort"></i>
+          </th>
+          <th title="Sắp xếp" style="width: 10%">
+            Ảnh <i class="fa fa-sort"></i>
+          </th>
+          <th title="Sắp xếp" style="width: 30%" onclick="sortNewsTable('title')">
+            Title <i class="fa fa-sort"></i>
+          </th>
+          <th title="Sắp xếp" style="width: 30%" onclick="sortNewsTable('link')">
+            Link <i class="fa fa-sort"></i>
+          </th>
+          <th title="Sắp xếp" style="width: 10%" onclick="sortNewsTable('web')">
+            Web <i class="fa fa-sort"></i>
+          </th>
+          <th title="Sắp xếp" style="width: 5%" onclick="sortNewsTable('time')">
+            Time <i class="fa fa-sort"></i>
+          </th>
+          <th style="width: 10%">Hành động</th>
+        </tr>
+      </table>
+
+      <div class="table-content"></div>
+
+      <div class="table-footer">
+        <select name="kieutimtintuc">
+          <option value="title">Tìm theo title</option>
+          <option value="link">Tìm theo link</option>
+          <option value="web">Tìm theo web</option>
+        </select>
+        <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemTinTuc(this)" />
+        <button onclick="document.getElementById('KhungThemTinTuc').style.transform = 'scale(1)';">
+          <i class="fa fa-plus-square"></i> Thêm tin tức
+        </button>
+
+      </div>
+      <div id="KhungThemTinTuc" class="overlay">
+        <span class="close" onclick="this.parentElement.style.transform = 'scale(0)';">&times;</span>
+
+        <table class="overlayTable table-outline table-content table-header">
+          <tr>
+            <th colspan="2">Thêm tin tức</th>
+          </tr>
+          <tr>
+            <td>Hình:</td>
+            <td>
+              <img class="hinhDaiDien" id="anhTinTuc" src="" />
+              <input type="file" accept="image/*" onchange="capNhatAnhSanPham(this.files, 'anhTinTuc')" />
+            </td>
+          </tr>
+          <tr>
+            <td>Tiêu đề:</td>
+            <td><input type="text" id="title" required autocomplete="off" /></td>
+          </tr>
+          <tr>
+            <td>Link:</td>
+            <td><input type="text" id="link" required autocomplete="off" /></td>
+          </tr>
+          <tr>
+            <td>Web:</td>
+            <td><input type="text" id="web" required autocomplete="off" /></td>
+          </tr>
+          <tr>
+            <td>Time</td>
+            <td><input type="text" id="time" required autocomplete="off" /></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="table-footer">
+              <button onclick="ThemTinTuc()">THÊM</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="khungSuaTinTuc" class="overlay add"></div>
     </div>
     <!-- // khach hang -->
   </div>
